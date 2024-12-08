@@ -17,4 +17,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+use App\Http\Controllers\CryptoController;
+
+Route::get('/', [CryptoController::class, 'index']);
+Route::post('/get-price', [CryptoController::class, 'getPrice'])->name('crypto.getPrice');
+Route::post('/search-cryptos', [CryptoController::class, 'searchCryptos'])->name('crypto.searchCryptos');
+
+Route::get('/crypto/price', [CryptoController::class, 'getLivePrice']);
+
+
+
+
 require __DIR__.'/auth.php';
